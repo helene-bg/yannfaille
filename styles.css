@@ -1,0 +1,254 @@
+body {
+  font-family: 'Instrument Serif', serif;
+  margin: 0;
+  background: #fff;
+}
+
+/* Menu en haut à gauche */
+#main-nav {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+}
+
+#main-nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Ovals noirs qui se touchent */
+#main-nav li + li {
+  margin-left: -8px;
+}
+
+#main-nav a {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 999px;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 400;
+  transition: transform 0.15s ease;
+}
+
+#main-nav a:hover {
+  transform: translateY(-2px);
+}
+
+
+
+
+
+
+/* ----- REBORD GRIS ----- */
+#about-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #ccc;
+  height: 90px;
+  overflow: hidden;
+  transition: height 0.4s ease;
+}
+
+#about-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px; /* hauteur totale de la ligne */
+  background: linear-gradient(
+    to right,
+    #000 0px 410px,
+    #ccc 410px 507px,
+    #fff 507px 535px,
+    #000 535px 554px,
+    #fff 554px 666px,
+    #000 666px 853px,
+    #fff 853px 881px,
+    #ccc 881px 1092px,
+    #000 1092px 1111px,
+    #ccc 1111px 1208px,
+    #fff 1208px 1278px
+    
+  );
+}
+
+#about-bar.expanded {
+  height: 260px;
+}
+
+.about-content {
+  padding-left: 20px; /* même que le menu */
+  padding-top: 20px;
+  padding-right: 30px; /* garde un peu d’espace à droite */
+  padding-bottom: 0;
+}
+
+/* Bio cachée au départ */
+.bio {
+  color: #6b6a6a;
+  font-size: 25px;
+  line-height: 1.5;
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+}
+
+#about-bar.expanded .bio {
+  opacity: 1;
+  max-height: 300px;
+  margin-bottom: 20px;
+}
+
+/* Bouton toujours fixé en bas à droite du rectangle gris */
+#about-toggle {
+  position: fixed;
+  bottom: 10px;
+  right: 30px;
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 999px;
+  font-family: 'Instrument Serif', serif;
+  font-size: 30px;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+#about-toggle:hover {
+  transform: translateY(-2px);
+}
+
+#container3D canvas {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+
+
+
+/* ----- GALERIE ----- */
+.gallery {
+  margin: 120px 10px 100px; /* espace sous le menu et au-dessus du rebord gris */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 8px;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.734);
+}
+
+/* ----- IMAGE EN GRAND ----- */
+#viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+#viewer img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+#viewer p {
+  position: absolute;
+  bottom: 40px;
+  left: 90px;
+  color: #d6d5d5;
+  font-size: 30px;
+  font-family: 'Instrument Serif', serif;
+  text-align: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 700px) {
+  /* Barre grise plus haute par défaut sur mobile */
+  #about-bar {
+    height: 150px; /* avant 90px */
+  }
+
+  /* Barre grise lorsqu'on clique sur MORE ABOUT ME sur mobile */
+  #about-bar.expanded {
+    height: 400px; /* avant 260px */
+ }
+
+  #about-toggle {
+    left: 40%;
+    
+  }
+
+  /* Menu burger minimaliste */
+  #burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50px;
+    height: 30px;
+    position: fixed;
+    top: 20px;
+    left: 20px; /* reste à gauche */
+    z-index: 1000;
+    cursor: pointer;
+  }
+
+  #burger span {
+    height: 7px;
+    width: 100%;
+    background: #000;
+    border-radius: 5px;
+  }
+
+  #main-nav ul {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    left: 20px;
+    background: #000;
+    padding: 40px;
+    border-radius: 15px;
+  }
+
+  #main-nav ul.show {
+    display: flex;
+  }
+}

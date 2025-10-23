@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yann Faille</title>
+
+  <!-- model-viewer -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Icône burger -->
+  <div id="burger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Menu -->
+  <nav id="main-nav">
+    <ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="archive.html">ARCHIVE</a></li>
+      <li><a href="mailto:">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <!-- Rebord gris avec bouton -->
+  <div id="about-bar">
+    <div class="about-content">
+      <p class="bio">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in felis sit amet risus cursus posuere.
+        Nulla facilisi. Sed vitae est sit amet turpis pulvinar congue. Donec vitae mi at elit fermentum volutpat.
+      </p>
+      <button id="about-toggle">MORE ABOUT ME</button>
+    </div>
+  </div>
+
+  <!-- OBJET 3D -->
+  <div class="model-container">
+    <model-viewer src="./spirale.glb" alt="spirale 3D" camera-controls auto-rotate></model-viewer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
