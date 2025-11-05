@@ -45,3 +45,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  const modelViewer = document.querySelector("model-viewer");
+  const loader = document.getElementById("loader");
+
+  if (modelViewer && loader) {
+    modelViewer.addEventListener("load", () => {
+      loader.style.display = "none";
+    });
+  }
+});
+
