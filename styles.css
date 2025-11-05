@@ -49,7 +49,7 @@ model-viewer {
   width: 100vw;
   height: 100vh;
   z-index: -1;
-  background-color: #f0f0f0; /* couleur de fond par défaut */
+  background-color: #006400; /* couleur de fond par défaut */
   object-fit: cover;
 }
 
