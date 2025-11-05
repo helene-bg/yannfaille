@@ -1,4 +1,13 @@
-body { font-family: 'Instrument Serif', serif; margin: 0; background: #696969; }
+body {
+  font-family: 'Instrument Serif', serif;
+  margin: 0;
+  background: #696969;
+  height: 100%; /* Important pour position fixed */
+}
+
+html {
+  height: 100%; /* idem */
+}
 
 /* Loader simple centré */
 #loader {
@@ -24,7 +33,6 @@ body { font-family: 'Instrument Serif', serif; margin: 0; background: #696969; }
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-
 
 /* Menu en haut à gauche */
 #main-nav {
@@ -62,20 +70,15 @@ body { font-family: 'Instrument Serif', serif; margin: 0; background: #696969; }
   transform: translateY(-2px);
 }
 
-
 /* --- MODEL-VIEWER plein écran et en arrière-plan --- */
 model-viewer {
   position: fixed;
-  inset: 0;         /* équivaut à top:0; left:0; right:0; bottom:0 */
+  inset: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
   background:#696969;
 }
-
-
-
-
 
 /* ----- REBORD GRIS ----- */
 #about-bar {
@@ -84,43 +87,21 @@ model-viewer {
   left: 0;
   width: 100%;
   background: #ccc;
-  height: 90px;
+  height: 12vh; /* Hauteur visible de base sur mobile */
+  max-height: 400px; /* Expansion max */
   overflow: hidden;
   transition: height 0.4s ease;
-}
-
-#about-bar::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 10px; /* hauteur totale de la ligne */
-  background: linear-gradient(
-    to right,
-    #000 0px 410px,
-    #ccc 410px 507px,
-    #fff 507px 535px,
-    #000 535px 554px,
-    #fff 554px 666px,
-    #000 666px 853px,
-    #fff 853px 881px,
-    #ccc 881px 1092px,
-    #000 1092px 1111px,
-    #ccc 1111px 1208px,
-    #fff 1208px 1278px
-    
-  );
+  z-index: 10;
 }
 
 #about-bar.expanded {
-  height: 260px;
+  height: 50vh; /* barre étendue */
 }
 
 .about-content {
-  padding-left: 20px; /* même que le menu */
+  padding-left: 20px;
   padding-top: 20px;
-  padding-right: 30px; /* garde un peu d’espace à droite */
+  padding-right: 30px;
   padding-bottom: 0;
 }
 
@@ -140,11 +121,12 @@ model-viewer {
   margin-bottom: 20px;
 }
 
-/* Bouton toujours fixé en bas à droite du rectangle gris */
+/* Bouton toujours centré dans le rebord gris */
 #about-toggle {
-  position: fixed;
+  position: absolute;
   bottom: 10px;
-  right: 30px;
+  left: 50%;
+  transform: translateX(-50%);
   background: #fff;
   color: #000;
   border: none;
@@ -154,12 +136,14 @@ model-viewer {
   font-size: 30px;
   cursor: pointer;
   transition: transform 0.15s ease;
+  z-index: 20;
 }
 
 #about-toggle:hover {
   transform: translateY(-2px);
 }
 
+/* Canvas 3D */
 #container3D canvas {
   width: 100vw;
   height: 100vh;
@@ -168,13 +152,9 @@ model-viewer {
   left: 0;
 }
 
-
-
-
-
 /* ----- GALERIE ----- */
 .gallery {
-  margin: 120px 10px 100px; /* espace sous le menu et au-dessus du rebord gris */
+  margin: 120px 10px 100px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 8px;
@@ -222,48 +202,28 @@ model-viewer {
   text-align: right;
 }
 
-
-
-
-
-
-
-
-
-
-
+/* ----- MEDIA QUERY MOBILE ----- */
 @media (max-width: 700px) {
   /* Barre grise fixe en bas sur mobile */
   #about-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 150px; /* hauteur par défaut */
-    background: #ccc;
-    z-index: 10; /* au-dessus de model-viewer */
-    overflow: hidden;
-    transition: height 0.4s ease;
+    height: 20vh;
+    max-height: 50vh;
   }
 
-  /* Barre grise lorsqu'on clique sur MORE ABOUT ME */
   #about-bar.expanded {
-    height: 400px;
+    height: 50vh;
   }
 
-  /* Contenu à l'intérieur de la barre */
+  /* Contenu */
   .about-content {
     padding: 20px;
   }
 
-  /* Bouton centré en bas de la barre */
+  /* Bouton centré dans la barre */
   #about-toggle {
-    position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    display: block;
-    z-index: 20;
   }
 
   /* Menu burger */
@@ -276,7 +236,7 @@ model-viewer {
     position: fixed;
     top: 20px;
     left: 20px;
-    z-index: 1000; /* toujours au-dessus de tout */
+    z-index: 1000;
     cursor: pointer;
   }
 
@@ -287,7 +247,7 @@ model-viewer {
     border-radius: 5px;
   }
 
-  /* Menu déroulant du burger */
+  /* Menu déroulant burger */
   #main-nav ul {
     display: none;
     flex-direction: column;
@@ -297,19 +257,20 @@ model-viewer {
     background: #000;
     padding: 40px;
     border-radius: 15px;
-    z-index: 1000; /* au-dessus du model-viewer et du rebord */
+    z-index: 1000;
   }
 
   #main-nav ul.show {
     display: flex;
   }
 
-  /* Sur mobile, on force model-viewer derrière */
+  /* Model-viewer derrière tout */
   model-viewer {
     position: fixed;
     inset: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* derrière tout */
+    z-index: -1;
   }
 }
+
