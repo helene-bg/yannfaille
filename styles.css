@@ -240,16 +240,20 @@ model-viewer {
   /* Barre grise plus haute par défaut sur mobile */
   #about-bar {
     height: 150px; /* avant 90px */
+    z-index: 10;   /* toujours au-dessus du modèle 3D */
   }
 
   /* Barre grise lorsqu'on clique sur MORE ABOUT ME sur mobile */
   #about-bar.expanded {
     height: 400px; /* avant 260px */
- }
+  }
 
+  /* Bouton centré en bas sur mobile, au-dessus du modèle */
   #about-toggle {
-    left: 40%;
-    
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    z-index: 20;
   }
 
   /* Menu burger minimaliste */
