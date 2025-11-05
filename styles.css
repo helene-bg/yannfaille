@@ -51,6 +51,17 @@ model-viewer {
   background-color: #A9A9A9;
 }
 
+#ar-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-family: inherit;
+  cursor: pointer;
+}
 
 
 
