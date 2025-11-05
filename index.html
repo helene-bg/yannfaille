@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Yann Faille</title>
 
- 
-
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Script model-viewer -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 </head>
 <body>
 
@@ -31,6 +32,16 @@
     </ul>
   </nav>
 
+  <!-- Modèle 3D -->
+  <model-viewer
+    src="./spirale.glb"
+    alt="Modèle 3D Spirale"
+    camera-controls
+    auto-rotate
+    shadow-intensity="1"
+    style="width: 100%; height: 500px; background-color: #f0f0f0;">
+  </model-viewer>
+
   <!-- Rebord gris avec bouton -->
   <div id="about-bar">
     <div class="about-content">
@@ -41,8 +52,6 @@
       <button id="about-toggle">MORE ABOUT ME</button>
     </div>
   </div>
-
- 
 
   <script src="script.js"></script>
 </body>
