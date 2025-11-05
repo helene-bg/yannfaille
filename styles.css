@@ -1,12 +1,13 @@
+/* --- GLOBAL --- */
 body {
   font-family: 'Instrument Serif', serif;
   margin: 0;
   background: #696969;
-  height: 100%; /* Important pour position fixed */
+  height: 100%;
 }
 
 html {
-  height: 100%; /* idem */
+  height: 100%;
 }
 
 /* Loader simple centré */
@@ -16,7 +17,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background:#696969;
+  background: #696969;
   z-index: 10;
 }
 
@@ -48,7 +49,6 @@ html {
   list-style: none;
 }
 
-/* Ovals noirs qui se touchent */
 #main-nav li + li {
   margin-left: -8px;
 }
@@ -70,14 +70,14 @@ html {
   transform: translateY(-2px);
 }
 
-/* --- MODEL-VIEWER plein écran et en arrière-plan --- */
+/* --- MODEL-VIEWER plein écran --- */
 model-viewer {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
-  background:#696969;
+  background: #696969;
 }
 
 /* ----- REBORD GRIS ----- */
@@ -87,15 +87,39 @@ model-viewer {
   left: 0;
   width: 100%;
   background: #ccc;
-  height: 12vh; /* Hauteur visible de base sur mobile */
-  max-height: 400px; /* Expansion max */
+  height: 12vh;
+  max-height: 400px;
   overflow: hidden;
   transition: height 0.4s ease;
   z-index: 10;
 }
 
+/* Lignes noires/blanches/grises exactes */
+#about-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(
+    to right,
+    #000 0px 410px,
+    #ccc 410px 507px,
+    #fff 507px 535px,
+    #000 535px 554px,
+    #fff 554px 666px,
+    #000 666px 853px,
+    #fff 853px 881px,
+    #ccc 881px 1092px,
+    #000 1092px 1111px,
+    #ccc 1111px 1208px,
+    #fff 1208px 1278px
+  );
+}
+
 #about-bar.expanded {
-  height: 50vh; /* barre étendue */
+  height: 260px;
 }
 
 .about-content {
@@ -105,7 +129,6 @@ model-viewer {
   padding-bottom: 0;
 }
 
-/* Bio cachée au départ */
 .bio {
   color: #6b6a6a;
   font-size: 25px;
@@ -121,7 +144,6 @@ model-viewer {
   margin-bottom: 20px;
 }
 
-/* Bouton toujours centré dans le rebord gris */
 #about-toggle {
   position: absolute;
   bottom: 10px;
@@ -137,13 +159,13 @@ model-viewer {
   cursor: pointer;
   transition: transform 0.15s ease;
   z-index: 20;
+  white-space: nowrap;
 }
 
 #about-toggle:hover {
   transform: translateY(-2px);
 }
 
-/* Canvas 3D */
 #container3D canvas {
   width: 100vw;
   height: 100vh;
@@ -202,40 +224,27 @@ model-viewer {
   text-align: right;
 }
 
+/* --- MOBILE --- */
 @media (max-width: 700px) {
-  /* Barre grise fixe en bas sur mobile */
   #about-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 30vh; /* plus haut dès l'ouverture */
-    max-height: 50vh; /* barre étendue max */
-    background: #ccc;
-    overflow: hidden;
-    transition: height 0.4s ease;
-    z-index: 10;
+    height: 30vh; /* barre plus haute dès l’ouverture */
+    max-height: 50vh;
   }
 
-  /* Barre grise lorsqu'on clique sur MORE ABOUT ME */
   #about-bar.expanded {
     height: 50vh;
   }
 
-  /* Contenu à l'intérieur de la barre */
   .about-content {
     padding: 20px;
   }
 
-  /* Bouton centré dans la barre et texte sur une seule ligne */
   #about-toggle {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    display: block;
-    z-index: 20;
-    white-space: nowrap; /* empêche le texte de passer à la ligne */
+    white-space: nowrap;
   }
 
   /* Menu burger */
@@ -255,11 +264,10 @@ model-viewer {
   #burger span {
     height: 7px;
     width: 100%;
-    background: #ffffff;
+    background: #fff;
     border-radius: 5px;
   }
 
-  /* Menu déroulant burger */
   #main-nav ul {
     display: none;
     flex-direction: column;
@@ -276,12 +284,7 @@ model-viewer {
     display: flex;
   }
 
-  /* Sur mobile, on force model-viewer derrière */
   model-viewer {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
     z-index: -1;
   }
 }
