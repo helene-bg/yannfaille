@@ -1,7 +1,10 @@
-body {
+html, body {
   font-family: 'Instrument Serif', serif;
   margin: 0;
   background: #696969;
+  height: 100%;        /* permet aux éléments fixed de se positionner correctement */
+  min-height: 100vh;   /* garantit la hauteur du viewport */
+  overflow-x: hidden;  /* évite un scroll horizontal accidentel */
 }
 
 /* Loader simple centré */
