@@ -41,6 +41,17 @@ body {
 }
 
 
+/* --- MODEL-VIEWER plein écran et en arrière-plan --- */
+model-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-color: #f0f0f0; /* couleur de fond par défaut */
+  object-fit: cover;
+}
 
 
 
