@@ -34,12 +34,26 @@
 
   <!-- Section modèle 3D -->
   <model-viewer
-    src="./spirale.glb"
-    alt="Modèle 3D Spirale"
+    src="spirale.glb"
+    ar
+    ar-modes="webxr scene-viewer quick-look"
     camera-controls
-    auto-rotate
+    tone-mapping="neutral"
+    poster="poster.webp"
     shadow-intensity="1"
     style="width:100%; height:500px; background-color:#f0f0f0;">
+
+    <div class="progress-bar hide" slot="progress-bar">
+      <div class="update-bar"></div>
+    </div>
+
+    <button slot="ar-button" id="ar-button">
+      View in your space
+    </button>
+
+    <div id="ar-prompt">
+      <img src="https://modelviewer.dev/shared-assets/icons/hand.png" alt="AR prompt">
+    </div>
   </model-viewer>
 
   <!-- Rebord gris avec bouton -->
