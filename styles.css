@@ -238,15 +238,12 @@ model-viewer {
 
 @media (max-width: 700px) {
   /* Barre grise fixe en bas sur mobile */
-  #about-bar {
+ #about-bar {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 150px;
-    z-index: 10;  
-    overflow: hidden;
-    transition: height 0.4s ease;
+    z-index: 10; /* doit être au-dessus de model-viewer */
   }
 
   #about-bar.expanded {
