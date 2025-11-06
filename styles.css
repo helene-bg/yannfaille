@@ -6,10 +6,6 @@ body {
   height: 100%;
 }
 
-html {
-  height: 100%;
-}
-
 /* Loader simple centré */
 #loader {
   position: fixed;
@@ -243,8 +239,8 @@ model-viewer {
   #about-toggle {
     position: absolute;
     bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 90%;
+    
     white-space: nowrap;
   }
 
